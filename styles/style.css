@@ -1,9 +1,13 @@
 html {
     height: webkit-fill-avaliable;
+    padding-bottom: 0!important;
+    margin-bottom: 0!important;
 }
 
 body {
     height: webkit-fill-avaliable;
+    padding-bottom: 0!important;
+    margin-bottom: 0!important;
 }
 
 .playerField {
@@ -16,6 +20,7 @@ body {
 .container {
     padding: 0px!important;
     margin: 5rem!important;
+    margin-bottom: 0!important;
 }
 
 .players {
@@ -37,7 +42,7 @@ body {
 .type-field {
     padding: 5px;
     /* border: 1px solid; */
-    height: 55%;
+    height: 57%;
     margin-bottom: 0px!important;
 }
 
@@ -69,9 +74,12 @@ img {
 }
 
 .rand-text {
-    display: none;
     text-align: center;
     background-color: rgba(211,211,211, 0.5);
+}
+
+.yellow {
+    color: red
 }
 
 .prvi {
@@ -93,8 +101,22 @@ img {
     height: 40px!important;
 }
 
+.nivo-dugme {
+    display: flex;
+    flex-wrap: nowrap;
+    height: fit-content;
+}
+
 .dugme2{
-    margin: 0 auto!important;
+    margin: 0 auto;
+}
+
+#nivo2{
+    width: fit-content;
+}
+
+h4{
+    display: inline;
 }
 
 
@@ -113,7 +135,7 @@ img {
     .type-field {
         padding: 5px;
         /* border: 1px solid; */
-        height: 45%;
+        height: 50%;
         margin-bottom: 0px!important;
     }
 
@@ -133,7 +155,7 @@ img {
         flex-wrap: wrap!important;
     } */
     .container{
-        margin: 50px auto!important;
+        margin: 60px auto 0!important;
         width: 100%;
         height: fit-content;
     }
@@ -150,6 +172,14 @@ img {
         height: 40vh;
         /* margin-bottom: 50px; */
     }
+
+    .type-field {
+        padding: 5px;
+        /* border: 1px solid; */
+        height: 50%;
+        margin-bottom: 0px!important;
+    }
+
     #eren {
         margin-bottom: 10px;
     }
