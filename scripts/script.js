@@ -3,10 +3,10 @@ var mikasa = document.getElementById('2')
 var levi = document.getElementById('3')
 var armin = document.getElementById('4')
 const text = document.getElementsByClassName('container-fluid')[0]
-const dugme1 = document.getElementById('dugme1')
+// const dugme1 = document.getElementById('dugme1')
 const dugme2 = document.getElementById('dugme2')
 const poljeZavrsio = document.getElementsByClassName('score')
-const poljeNivo1 = document.getElementById('nivo1')
+// const poljeNivo1 = document.getElementById('nivo1')
 const poljeNivo2 = document.getElementById('nivo2')
 var kraj = document.getElementsByClassName('type-field')
 var pobednici = [[], [], [], []]
@@ -27,8 +27,8 @@ function reportWindowSize() {
   window.onresize = reportWindowSize;
 
   setTimeout(function () {
-    let viewheight = $(window).height();
-    let viewwidth = $(window).width();
+    let viewheight = window.innerHeight;
+    let viewwidth = window.innerWidth;
     let viewport = document.querySelector("meta[name=viewport]");
     viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0");
 }, 300);
@@ -37,21 +37,13 @@ function reportWindowSize() {
 const tekstovi = ['Ko rano rani dve srece Gnabri', 'Nikome nije do zore gorela', 'Sto mogu danas to cu sutra vidzet', 'Bez alata nema ni zanata', 'Oko za oko, pasta za zube', 'Bolje biti bogat i zdrav, jer kad si siromasan dzaba ti sto si bolestan', 'Bolje voditi ljubav nego psa']
 var random;
 
-if(windowWIdth < 576){
-    console.log(windowWIdth)
-    var poljeNivo = poljeNivo1
-    poljeNivo.innerHTML = `<h4>Nivo: ${nivo}</h4>`
-    var dugme = dugme1
-    console.log(dugme)
-    pocniIgru(dugme, poljeNivo)
-} else {
     console.log(windowWIdth)
     var poljeNivo = poljeNivo2
     poljeNivo.innerHTML = `<h4>Nivo: ${nivo}</h4>`
     var dugme = dugme2
     console.log(dugme)
     pocniIgru(dugme, poljeNivo)
-}
+
 
 function pocniIgru(dugme, poljeNivo){
     if (dugme.innerHTML == 'Start') {
