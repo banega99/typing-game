@@ -192,6 +192,15 @@ h4{
         width: 100%;
         /* background-color: lightgray; */
     }
+    .score-field {
+        padding-top: 10px!important;
+        
+    }
+
+    h6 {
+        display: inline-block;
+        margin-top: 5px;
+    }
 
     
     
