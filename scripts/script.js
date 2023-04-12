@@ -26,6 +26,12 @@ function reportWindowSize() {
   
   window.onresize = reportWindowSize;
 
+  setTimeout(function () {
+    let viewheight = $(window).height();
+    let viewwidth = $(window).width();
+    let viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0");
+}, 300);
 
 
 const tekstovi = ['Ko rano rani dve srece Gnabri', 'Nikome nije do zore gorela', 'Sto mogu danas to cu sutra vidzet', 'Bez alata nema ni zanata', 'Oko za oko, pasta za zube', 'Bolje biti bogat i zdrav, jer kad si siromasan dzaba ti sto si bolestan', 'Bolje voditi ljubav nego psa']
