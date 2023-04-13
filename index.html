@@ -8,20 +8,40 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <div class="container-fluid rand-text fixed-top justify-content-center p-3" onmousedown="return false" onclick="return false">
-        <h4>Igrica brzog kucanja 💨🫳⌨️</h4>
+    <div class="container-fluid rand-text fixed-top justify-content-center p-2" onmousedown="return false" onclick="return false">
+        <ul class="nav nav-tabs">
+            
+            <li class="nav-item dropdown col-2 col-sm-1">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                <div class="burger"></div>
+                <div class="burger"></div>
+                <div class="burger"></div>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Pravila igre</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Izaberi nivo</a></li>
+              </ul>
+            </li>
+            <li class="align-self-center col-8 col-sm-10">
+                <h4>Igrica brzog kucanja 💨🫳⌨️</h4>
+            </li>
+          </ul>
+        
     </div>
     <div class="container">
         <div class="players row justify-content-sm-between p-0">
             <div class="col-6 col-md-3 playerField   p-0 " id="eren">
                 <div class="image-holder">
-                    <img src="./assets/images/Eren_jaeger.png" alt="">
+                    <img id="slikaIgrac" src="./assets/images/placeholder.jpg" alt="">
+                    <label for="slika" id="label">Odaberi sliku</label>
+                    <input type="file" name="" id="slika" accept="image/*" onchange="dodajSliku()">
                 </div>
                 <div class="text-center">
-                    <h4>Eren</h4>
+                    <h4 id="ime">Igrač 1</h4>
                 </div>
                 <div class="type-field" >
-                    <textarea id="1" disabled ></textarea>
+                    <textarea id="1" disabled></textarea>
                 </div>
                 <div class="score-field">
                     <div class="score">
@@ -33,6 +53,7 @@
             <div class="playerField   p-0 col-6 col-md-3">
                 <div class="image-holder">
                     <img src="./assets/images/FJ7o1s-aMAA5ZsM.jpg" alt="">
+                    
                 </div>
                 <div class="text-center">
                     <h4>Mikasa</h4>
@@ -96,6 +117,11 @@
         
         
     </div>
+
+    <div id="pravila-igre">
+        
+    </div>
+    <div id="izaberi-nivo"></div>
 
 
     <script src="./scripts/script.js"></script>

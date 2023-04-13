@@ -1,4 +1,7 @@
 var eren = document.getElementById('1')
+
+
+var poljeIme = document.getElementById('ime')
 var mikasa = document.getElementById('2')
 var levi = document.getElementById('3')
 var armin = document.getElementById('4')
@@ -12,6 +15,31 @@ var pobednici = [[], [], [], []]
 var score = 0
 var nivo = 1
 var greska = 0
+
+var ime = prompt('Unesite ime igrača' )
+
+if(ime == '') poljeIme.innerText = 'Eren'
+else poljeIme.innerText = ime
+
+
+
+function dodajSliku(){
+    var slika = document.getElementById('slika')
+    console.log(slika)
+    if(slika.files.length > 0){
+        var fileReader = new FileReader()
+        fileReader.onload = function (e) {
+            var poljeSlika = document.getElementById('slikaIgrac')
+            poljeSlika.setAttribute('src', e.target.result)
+            console.log(poljeSlika)
+        }
+        fileReader.readAsDataURL(slika.files[0])
+        slika.style.display = 'none'
+        var label = document.getElementById('label')
+        label.style.display = 'none'
+    }
+
+}
 
 //Resenje za problem kada tastatura natelefonu pomera sadrzaj stranice na gore
 setTimeout(function () {
@@ -29,10 +57,18 @@ pocniIgru(dugme, poljeNivo)
 
 function pocniIgru(dugme, poljeNivo) {
     if (dugme.innerHTML == 'Start') {
+        
         dugme.addEventListener('click', () => {
-            
+            eren.classList.remove('is-valid')
+            var slika = document.getElementById('slika')
+            if(slika.value == ''){
+                var poljeSlika = document.getElementById('slikaIgrac')
+                poljeSlika.setAttribute('src', './assets/images/Eren_jaeger.png')
+                var label = document.getElementById('label')
+                label.style.display = 'none'
+            }
             if (nivo == 1) {
-                text.innerHTML = '<h4 class="yellow">Nakon odbrojavanja ovde ce se pojaviti tekst koji treba da prekucate. Srecno! 😉</h4>'
+                text.innerHTML = '<h4 class="yellow">Nakon odbrojavanja ovde ce se pojaviti tekst koji treba da prekucate. Srećno! 😉</h4>'
                 kraj[0].innerHTML = `<textarea id="1" disabled></textarea>`
                 eren = document.getElementById('1')
                 eren.addEventListener('keyup', (e) => {
@@ -48,6 +84,8 @@ function pocniIgru(dugme, poljeNivo) {
                     if (e.key === 'Enter') {
                         var erenTrim = eren.value.trim()
                         if (erenTrim == tekst) {
+                            eren.classList.add('form-control', 'is-valid')
+                            eren.setAttribute('disabled', 'disabled')
                             eren.classList.remove('is-invalid')
                             score++
                             zavrsioPoRedu(score, zavrsio, 0)
@@ -174,7 +212,7 @@ function pocniIgru(dugme, poljeNivo) {
         poljeNivo.innerHTML = nivo < 6 ? `<h4>Nivo: ${nivo}</h4>` : ``
         //provera da li je doslo do poslednjeg nivoa i kraja igre, gde kasnije sledi sabiranje bodova i proglasenje konacnog pobednika, 
         //na kraju svega restartuje se vracanjem nivoa na 1 i skora na 0
-        if (nivo == 6) {
+        if (nivo == 3) {
             var igrac1 = pobednici[0].reduce(sum)
             var igrac2 = pobednici[1].reduce(sum)
             var igrac3 = pobednici[2].reduce(sum)
@@ -193,7 +231,7 @@ function pocniIgru(dugme, poljeNivo) {
                 k.innerHTML = ''
             }
             let i = pobednici.indexOf(max_niza)
-            kraj[i].innerHTML = `<h3 class="text-center">POBEDNIK!</h3>`
+            kraj[i].innerHTML = `<h3 class="text-center pobednik">POBEDNIK!</h3>`
             nivo = 1
             if (nivo == 1) {
                 tekstovi = ['Ko rano rani dve srece Gnabri', 'Nikome nije do zore gorela', 'Sto mogu danas to cu sutra vidzet', 'Bez alata nema ni zanata', 'Oko za oko, pasta za zube', 'Bolje biti bogat i zdrav, jer kad si siromasan dzaba ti sto si bolestan', 'Bolje voditi ljubav nego psa']
@@ -226,19 +264,19 @@ function pocniIgru(dugme, poljeNivo) {
     function zavrsioPoRedu(score, zavrsio, i) {
         switch (score) {
             case 1:
-                zavrsio.innerHTML = '<h6 class="prvi">Prvi</h6>'
+                zavrsio.innerHTML = '<h6 class="prvi"><strong>Prvi</strong></h6>'
                 pobednici[i].push(4)
                 break;
             case 2:
-                zavrsio.innerHTML = '<h6>Drugi</h6>'
+                zavrsio.innerHTML = '<h6><strong>Drugi</strong></h6>'
                 pobednici[i].push(3)
                 break;
             case 3:
-                zavrsio.innerHTML = '<h6>Treći</h6>'
+                zavrsio.innerHTML = '<h6><strong>Treći</strong></h6>'
                 pobednici[i].push(2)
                 break;
             case 4:
-                zavrsio.innerHTML = '<h6 class="poslednji">Poslednji</h6>'
+                zavrsio.innerHTML = '<h6 class="poslednji"><strong>Poslednji</strong></h6>'
                 pobednici[i].push(1)
                 break;
 

@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Ubuntu:wght@300;400&display=swap');
+
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
 html {
     height: webkit-fill-avaliable;
     padding-bottom: 0!important;
@@ -5,16 +14,64 @@ html {
 }
 
 body {
+    color: #0C4A60;;
+    background: rgb(134,232,255);
+    background: linear-gradient(90deg, rgba(134,232,255,1) 0%, rgba(255,240,201,1) 20%, rgba(255,238,194,1) 80%, rgba(134,232,255,1) 100%);
     height: webkit-fill-avaliable;
     padding-bottom: 0!important;
     margin-bottom: 0!important;
 }
 
+.nav {
+    padding-left: 50px;
+    padding-right: 50px;
+    border-bottom: 1px solid #0C4A60;;
+}
+.show {
+    color: #0C4A60;
+    background-color: rgba(255,240,201,1);
+}
+
+.dropdown-toggle {
+    max-width: fit-content !important;
+    border: 1px solid #0C4A60!important;
+}
+
+.dropdown-toggle:hover {
+    background-color: #0C4A60;
+}
+
+.dropdown-toggle:hover .burger {
+    background-color: rgba(255,240,201,1);
+}
+
+.dropdown-item:hover {
+    background-color: #0C4A60;
+    color: rgba(255,240,201,1);
+}
+
+.burger {
+    margin: 5px auto;
+    width: 20px;
+    height: 2px;
+    background-color: #0C4A60;
+    border-radius: 3px;
+}
+.burger:not(:last-child){
+    margin-bottom: 2px;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
 .playerField {
+    background-color: white;
     border-radius: 5px;
     height: 500px;
     width: 24%;
     border: 0.3px solid lightgray;
+    box-shadow: 4px 4px 4px 4px gray;
 }
 
 .container {
@@ -30,6 +87,7 @@ body {
 }
 
 .image-holder {
+    position: relative;
     /* border: 1px solid; */
     border-radius: 5px 5px 0 0;
     padding: 4px;
@@ -53,6 +111,7 @@ textarea {
 }
 
 .score-field {
+    
     margin-top: 0;
     padding: 5px;
     height: 7%;
@@ -60,7 +119,8 @@ textarea {
 }
 
 .score {
-    background-color: yellow;
+    background-color: #ABDFF1; 
+    /* background-color: rgb(134,232,255);; */
     border-radius: 3px;
     /* border: 1px solid; */
     height: 100%;
@@ -73,13 +133,44 @@ img {
     height: 100%;
 }
 
+#slika {
+    display: none;
+}
+
+label {
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    left: 10px;
+    color: #FFF8DC;
+    outline: none;
+    border: none;
+    background-color: #0C4A60;
+    box-shadow: 
+    2px 2px 2px 2px #03202b;
+    /* 4px 4px 4px 4px gray; */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+label:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+label:active {
+    transform: translateX(2px) translateY(2px);
+    box-shadow: 2px 2px 2px 2px gray;
+}
+
 .rand-text {
     text-align: center;
-    background-color: rgba(211,211,211, 0.5);
+    background: rgb(134,232,255);
+
 }
 
 .yellow {
-    color: red
+    color: #EF6C33
 }
 
 .prvi {
@@ -111,12 +202,43 @@ img {
     margin: 0 auto;
 }
 
+#dugme2 {
+    color: #FFF8DC;
+    outline: none;
+    border: none;
+    background-color: #0C4A60;
+    box-shadow: 2px 2px 2px 2px #03202b, 4px 4px 4px 4px gray; 
+}
+
+#dugme2:hover {
+    opacity: 0.8;
+}
+
+#dugme2:active {
+    transform: translateX(2px) translateY(2px);
+    box-shadow: 2px 2px 2px 2px gray;
+}
+
 #nivo2{
     width: fit-content;
 }
 
 h4{
+    
     display: inline;
+    text-shadow: 1px 1px gray
+    
+}
+
+.pobednik {
+    border-radius: 5px;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    padding-top: 60px;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    background-color: seagreen;
 }
 
 
@@ -157,8 +279,19 @@ h4{
     .container{
         margin: 60px auto 0!important;
         width: 100%;
-        height: fit-content;
+        height: fit-content !important;
+        padding: 0 !important;
     }
+
+    .rand-text{
+        padding: 0;
+    }
+
+    .nav {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .players {
         height: 100%!important;
         margin: 10px auto !important;
@@ -202,6 +335,10 @@ h4{
         margin-top: 5px;
     }
 
-    
+    label {
+        width: fit-content;
+        height: fit-content;
+        font-size: 12px;
+    }
     
 }
