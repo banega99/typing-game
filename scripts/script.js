@@ -212,7 +212,7 @@ function pocniIgru(dugme, poljeNivo) {
         poljeNivo.innerHTML = nivo < 6 ? `<h4>Nivo: ${nivo}</h4>` : ``
         //provera da li je doslo do poslednjeg nivoa i kraja igre, gde kasnije sledi sabiranje bodova i proglasenje konacnog pobednika, 
         //na kraju svega restartuje se vracanjem nivoa na 1 i skora na 0
-        if (nivo == 3) {
+        if (nivo == 6) {
             var igrac1 = pobednici[0].reduce(sum)
             var igrac2 = pobednici[1].reduce(sum)
             var igrac3 = pobednici[2].reduce(sum)
