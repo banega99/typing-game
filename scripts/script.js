@@ -90,7 +90,13 @@ function pocniIgru(dugme, poljeNivo) {
                     dugme.style.display = 'none'
                     text.innerHTML = `<h4>${tekstovi[random]}</h4>`
                     text.style.display = 'block'
-                    var interval = 500
+                    var interval 
+                    if(window.innerWidth < 576){
+                        interval = 650
+                    } else {
+                        interval = 500
+                    }
+                    console.log(interval)
                     switch (nivo) {
                         case 1:
                             pozoviPisanje(mikasa, levi, armin, interval, 90, 350, random, 1, 2, 3)
