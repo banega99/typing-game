@@ -53,6 +53,13 @@ var tekstovi = ['Ko rano rani dve srece Gnabri', 'Nikome nije do zore gorela', '
 var random;
 
 poljeNivo.innerHTML = `<h4>Nivo: ${nivo}</h4>`
+
+function enter(e){
+    console.log(e)
+}
+
+console.log(dugme)
+
 pocniIgru(dugme, poljeNivo)
 
 function pocniIgru(dugme, poljeNivo) {
