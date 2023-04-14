@@ -8,15 +8,20 @@
 }
 
 html {
+    position: relative;
     height: webkit-fill-avaliable;
     padding-bottom: 0!important;
     margin-bottom: 0!important;
 }
 
 body {
-    color: #0C4A60;;
-    background: rgb(134,232,255);
-    background: linear-gradient(90deg, rgba(134,232,255,1) 0%, rgba(255,240,201,1) 20%, rgba(255,238,194,1) 80%, rgba(134,232,255,1) 100%);
+    
+    background-image: url(../assets/images/36630.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    color: #0C4A60;
+    /* background: rgb(134,232,255);
+    background: linear-gradient(90deg, rgba(134,232,255,1) 0%, rgba(255,240,201,1) 20%, rgba(255,238,194,1) 80%, rgba(134,232,255,1) 100%); */
     height: webkit-fill-avaliable;
     padding-bottom: 0!important;
     margin-bottom: 0!important;
@@ -34,15 +39,15 @@ body {
 
 .dropdown-toggle {
     max-width: fit-content !important;
-    border: 1px solid #0C4A60!important;
+    border: 1px solid #FFF8DC!important;
 }
 
 .dropdown-toggle:hover {
-    background-color: #0C4A60;
+    background-color: #FFF8DC;
 }
 
 .dropdown-toggle:hover .burger {
-    background-color: rgba(255,240,201,1);
+    background-color: #0C4A60;
 }
 
 .dropdown-item:hover {
@@ -54,7 +59,7 @@ body {
     margin: 5px auto;
     width: 20px;
     height: 2px;
-    background-color: #0C4A60;
+    background-color: #FFF8DC;
     border-radius: 3px;
 }
 .burger:not(:last-child){
@@ -71,13 +76,13 @@ body {
     height: 500px;
     width: 24%;
     border: 0.3px solid lightgray;
-    box-shadow: 4px 4px 4px 4px gray;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.63);
 }
 
 .container {
+    margin: 100px auto;
     padding: 0px!important;
-    margin: 5rem!important;
-    margin-bottom: 0!important;
+    
 }
 
 .players {
@@ -165,8 +170,14 @@ label:active {
 
 .rand-text {
     text-align: center;
-    background: rgb(134,232,255);
+    background: #0C4A60;
+    color: #FFF8DC;
 
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
 }
 
 .yellow {
@@ -206,24 +217,27 @@ label:active {
     border-radius: 5px;
     height: 30px;
     padding: 3px;
+    font-weight: 500;
     color: #FFF8DC;
     outline: none;
     border: none;
     background-color: #0C4A60;
-    box-shadow: 2px 2px 2px 2px #03202b, 4px 4px 4px 4px gray; 
+    box-shadow: 4px 4px 0px 0px #03202b, 4px 4px 4px 4px rgba(0, 0, 0, 0.63); 
 }
 
 #dugme2:hover {
     cursor: pointer;
-    opacity: 0.8;
+    background-color: #2e8cad;
 }
 
 #dugme2:active {
     transform: translateX(2px) translateY(2px);
-    box-shadow: 2px 2px 2px 2px gray;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.63);
+    background-color: #0a5b79;
 }
 
 #nivo2{
+    color: #FFF8DC;;
     width: fit-content;
 }
 
@@ -245,6 +259,65 @@ h4{
     background-color: seagreen;
 }
 
+#pravila-igre {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+#pravila-igre div {
+    position: relative;
+    margin: 10% auto;
+    color: #FFF8DC;
+    background-color: #0a5b79;
+    width: 600px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#pravila-igre span{
+    position: absolute;
+    top: 1px;
+    right: 6px;
+}
+
+#pravila-igre span:hover{
+    cursor: pointer;
+    color: #EF6C33;
+}
+
+#pravila-igre div img {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 50px;
+    height: 50px;
+}
+
+/* dropdow */
+
+.dropdown-menu li {
+    position: relative;
+    }
+    .dropdown-menu .dropdown-submenu {
+    background-color: #FFF8DC;
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+    }
+    .dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    left: auto;
+    }
+    .dropdown-menu > li:hover > .dropdown-submenu {
+    display: block;
+    }
+/* dropdown */
 
 @media(max-width:1200px) {
     h4 {
@@ -348,5 +421,19 @@ h4{
         height: fit-content;
         font-size: 12px;
     }
+
+    #pravila-igre div {
+        position: relative;
+        margin: 40% auto;
+        color: #FFF8DC;
+        background-color: #0a5b79;
+        width: 300px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .dropdown-menu > li:active > .dropdown-submenu {
+        display: block;
+        }
     
 }

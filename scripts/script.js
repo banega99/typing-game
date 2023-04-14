@@ -1,5 +1,9 @@
 var eren = document.getElementById('1')
+const pravilaIgre = document.getElementById('pravila-igre')
+const pravilaLink = document.getElementById('pravila-link') 
+const x = document.getElementById('x')
 
+const odaberiNivoe = document.getElementsByClassName('odaberi-nivo')
 
 var poljeIme = document.getElementById('ime')
 var mikasa = document.getElementById('2')
@@ -16,12 +20,28 @@ var score = 0
 var nivo = 1
 var greska = 0
 
+console.log(odaberiNivoe)
+
 var ime = prompt('Unesite ime igrača' )
 
 if(ime == '') poljeIme.innerText = 'Eren'
 else poljeIme.innerText = ime
 
+pravilaLink.addEventListener('click', () => {
+    pravilaIgre.style.display = 'block'
+    x.addEventListener('click', () => {
+        pravilaIgre.style.display = 'none'
+    })
+})
 
+for (let i = 0; i < odaberiNivoe.length; i++) {
+    const odaberiNivo = odaberiNivoe[i];
+    odaberiNivo.addEventListener('click', () => {
+        nivo = i+1
+        console.log(nivo)
+        poljeNivo.innerHTML = `<h4>Nivo: ${nivo}</h4>`
+    })
+}
 
 function dodajSliku(){
     var slika = document.getElementById('slika')
@@ -74,7 +94,7 @@ function pocniIgru(dugme, poljeNivo) {
                 var label = document.getElementById('label')
                 label.style.display = 'none'
             }
-            if (nivo == 1) {
+            if (nivo != 6) {
                 text.innerHTML = '<h4 class="yellow">Nakon odbrojavanja ovde ce se pojaviti tekst koji treba da prekucate. Srećno! 😉</h4>'
                 kraj[0].innerHTML = `<textarea id="1" disabled></textarea>`
                 eren = document.getElementById('1')
@@ -117,7 +137,8 @@ function pocniIgru(dugme, poljeNivo) {
                 }
             }
             kraj = document.getElementsByClassName('type-field')
-            dugme.setAttribute('disabled', true);
+            dugme.style.pointerEvents = 'none';
+            dugme.style.backgroundColor = '#2e8cad';
             score = 0
             for (let polje of poljeZavrsio) {
                 polje.innerHTML = ''
@@ -211,8 +232,8 @@ function pocniIgru(dugme, poljeNivo) {
     //funkcija koja se poziva za povecanje nivoa
     function visiNivo() {
 
-        dugme.removeAttribute('disabled')
-
+        dugme.style.pointerEvents = 'all';
+        dugme.style.backgroundColor = '#0C4A60';
         nivo++
         eren.setAttribute('disabled', true)
 
