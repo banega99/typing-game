@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Ubuntu:wght@300;400&display=swap');
 
+@font-face {
+    font-family: 'Goth Titan Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    src: local('Goth Titan Regular'), url('/aotfont/GothTitan-0W5md.woff') format('woff');
+    }
 
 * {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu';
     font-weight: 400;
+    
 }
 
 html {
@@ -27,10 +35,15 @@ body {
     margin-bottom: 0!important;
 }
 
+#title {
+    font-family: 'Goth Titan Regular'
+}
+
 .nav {
     padding-left: 50px;
     padding-right: 50px;
     border-bottom: 1px solid #0C4A60;;
+    /* font-size: large; */
 }
 .show {
     color: #0C4A60;
@@ -105,7 +118,7 @@ body {
 .type-field {
     padding: 5px;
     /* border: 1px solid; */
-    height: 57%;
+    height: 55%;
     margin-bottom: 0px!important;
 }
 
@@ -119,7 +132,7 @@ textarea {
     
     margin-top: 0;
     padding: 5px;
-    height: 7%;
+    height: 8%;
     /* border: 1px solid; */
 }
 
@@ -241,11 +254,21 @@ label:active {
     width: fit-content;
 }
 
-h4{
+#title h4{
     
     display: inline;
     text-shadow: 1px 1px gray
     
+}
+
+.x:hover {
+    cursor: pointer;
+    color: #EF6C33;
+}
+
+x:active {
+    cursor: pointer;
+    color: #EF6C33;
 }
 
 .pobednik {
@@ -257,6 +280,62 @@ h4{
     color: white;
     text-shadow: 0px 0px 5px black;
     background-color: seagreen;
+}
+
+#izaberi-nivo {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+#profil-igraca {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+#profil-igraca div {
+    position: relative;
+    margin: 10% auto;
+    color: #FFF8DC;
+    background-color: #0a5b79;
+    width: 400px;
+    height: 250px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#profil-igraca span {
+    position: absolute;
+    top: 1px;
+    right: 6px;
+}
+
+#profil-igraca div img {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 50px;
+    height: 50px;
+}
+
+
+#izaberi-nivo div {
+    position: relative;
+    margin: 10% auto;
+    color: #FFF8DC;
+    background-color: #0a5b79;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 #pravila-igre {
@@ -317,12 +396,15 @@ h4{
     .dropdown-menu > li:hover > .dropdown-submenu {
     display: block;
     }
+    .dropdown-item:active .dropdown-menu {
+        display: block;
+    }
 /* dropdown */
 
 @media(max-width:1200px) {
-    h4 {
+    /* h4 {
         font-size: 18px;
-    }
+    } */
 
     .playerField {
         height: 300px;
@@ -334,7 +416,7 @@ h4{
     .type-field {
         padding: 5px;
         /* border: 1px solid; */
-        height: 50%;
+        height: 46%;
         margin-bottom: 0px!important;
     }
 
@@ -407,7 +489,8 @@ h4{
         /* background-color: lightgray; */
     }
     .score-field {
-        padding-top: 10px!important;
+        padding-top: 0px!important;
+        height: 34px;
         
     }
 
@@ -422,7 +505,7 @@ h4{
         font-size: 12px;
     }
 
-    #pravila-igre div {
+    #pravila-igre div, #profil-igraca div  {
         position: relative;
         margin: 40% auto;
         color: #FFF8DC;
@@ -430,6 +513,52 @@ h4{
         width: 300px;
         padding: 10px;
         border-radius: 5px;
+    }
+
+    #izaberi-nivo div{
+        position: relative;
+        margin: 50% auto;
+        color: #FFF8DC;
+        background-color: #0a5b79;
+        height: fit-content;
+        width: 100px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    #izaberi-nivo ul {
+        padding: 4px;
+        text-align: center;
+        margin: 0;
+    }
+
+    #izaberi-nivo li {
+        font-size: 18px;
+        list-style: none;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    #izaberi-nivo li:not(:last-child ){
+        margin-bottom: 0px;
+        border-bottom: 1px solid #FFF8DC;
+    }
+
+    #izaberi-nivo li:active {
+        background-color: #FFF8DC;
+        color: #0a5b79;
+    }
+
+    #izaberi-nivo span{
+        color: #FFF8DC;
+        position: absolute;
+        font-size: 14px;
+        top: 1px;
+        right: 6px;
+    }
+
+    #izaberi-nivo span:active{
+        background-color: #EF6C33;
     }
 
     .dropdown-menu > li:active > .dropdown-submenu {

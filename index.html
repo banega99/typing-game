@@ -17,11 +17,11 @@
                 <div class="burger"></div>
                 <div class="burger"></div>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id="padajuci">
                 <li><a id="pravila-link" class="dropdown-item" href="#">Pravila igre</a></li>
-                <li><hr class="dropdown-divider"></li>
+                
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" id="nivo-link" href="#">
                       Odaberi nivo &raquo;
                     </a>
                     <ul class="dropdown-menu dropdown-submenu">
@@ -42,11 +42,13 @@
                       </li>
                     </ul>
                   </li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a id="profil" class="dropdown-item" href="#">Profil</a></li>
                 
               </ul>
             </li>
-            <li class="align-self-center col-8 col-sm-10">
-                <h4>Igrica brzog kucanja 💨🫳⌨️</h4>
+            <li class="align-self-center col-8 col-sm-10" id="title">
+                <h4>Attack on Keyboard</h4>
             </li>
             <li>
                 <div class="logo">
@@ -134,7 +136,7 @@
                     </div>
                 </div>
                 <div class="col-6 text-center">
-                    <div id="dugme2" onkeydown="enter($event)">Start</div>
+                    <div id="dugme2">Start</div>
                 </div>
                 <div class="col-3">
 
@@ -148,7 +150,7 @@
     <div id="pravila-igre">
         <div>
             <h3>Pravila igre</h3>
-            <span id="x">X</span>
+            <span class="x">X</span>
             <p>Da li si brži od veštačke inteligencije?🤔<br>
                 Pritisti dugme <strong>Start</strong> da bi započeo igru. <br> 
                 Nakon odbrojavanja na vrhu ekrana će ti se pojaviti tekst koji treba što pre da prekucaš. <br>
@@ -162,7 +164,29 @@
             
         </div>
     </div>
-    <div id="izaberi-nivo"></div>
+    <div id="izaberi-nivo">
+        <div>
+            <span class="x">X</span>
+            <ul>
+                <li class="nivo-lista">Nivo 1</li>
+                <li class="nivo-lista">Nivo 2</li>
+                <li class="nivo-lista">Nivo 3</li>
+                <li class="nivo-lista">Nivo 4</li>
+                <li class="nivo-lista">Nivo 5</li>
+            </ul>
+        </div>
+    </div>
+    <div id="profil-igraca">
+        <div id="statistika">
+            <span class="x">X</span>  
+            <h3 class="text-center mb-2"><strong>Igrač</strong></h3>         
+            <h4>Statistika:</h4>
+            <h5 id="itekstovi"class="text-center mt-3"></h5>
+            <h5 id="omecevi"class="text-center"></h5>
+            <h5 id="pob"class="text-center"></h5>
+            <img src="./assets/images/logo.svg" alt="">`
+        </div>
+    </div>
 
 
     <script src="./scripts/script.js"></script>
