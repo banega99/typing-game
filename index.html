@@ -22,7 +22,7 @@
                 
                 <li>
                     <a class="dropdown-item" id="nivo-link" href="#">
-                      Odaberi nivo &raquo;
+                        Odaberi nivo <span class="d-none d-sm-inline">&raquo;</span>
                     </a>
                     <ul class="dropdown-menu dropdown-submenu">
                       <li>
@@ -178,13 +178,23 @@
     </div>
     <div id="profil-igraca">
         <div id="statistika">
+            <div class="row">
+                <div id="prof-slik" class='col-4 justify-content-center'>
+                    <img id="profilna-slika" src="./assets/images/placeholder.jpg" alt="" srcset="">
+                </div>
+                <div class='col-4 align-items-center justify-content-center'>
+                    <h3 id="statistika-ime" class="text-center mb-2"><strong>Igrač</strong></h3> 
+                </div>
+                <div class="col-4"></div>
+            </div>
+            
             <span class="x">X</span>  
-            <h3 class="text-center mb-2"><strong>Igrač</strong></h3>         
+                    
             <h4>Statistika:</h4>
             <h5 id="itekstovi"class="text-center mt-3"></h5>
             <h5 id="omecevi"class="text-center"></h5>
             <h5 id="pob"class="text-center"></h5>
-            <img src="./assets/images/logo.svg" alt="">`
+            <img src="./assets/images/logo.svg" alt="">
         </div>
     </div>
 
