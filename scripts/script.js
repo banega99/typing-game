@@ -438,6 +438,61 @@ function enter(e) {
                 mikasa.innerHTML = ''
                 armin.innerHTML = ''
                 levi.innerHTML = ''
+                text.innerHTML = ` <ul class="nav nav-tabs">
+            
+                <li class="nav-item dropdown col-2 col-sm-1">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"  href="#" role="button" aria-expanded="false">
+                    <div class="burger"></div>
+                    <div class="burger"></div>
+                    <div class="burger"></div>
+                  </a>
+                  <ul class="dropdown-menu" id="padajuci">
+                    <li><a id="pravila-link" class="dropdown-item" href="#">Pravila igre</a></li>
+                    
+                    <li>
+                        <a class="dropdown-item" id="nivo-link" href="#">
+                          Odaberi nivo &raquo;
+                        </a>
+                        <ul class="dropdown-menu dropdown-submenu">
+                          <li>
+                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 1</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 2</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 3</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 4</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 5</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a id="profil" class="dropdown-item" href="#">${igrac.ime}</a></li>
+                    
+                  </ul>
+                </li>
+                <li class="align-self-center col-8 col-sm-10" id="title">
+                    <h4>Attack on Keyboard</h4>
+                </li>
+                <li>
+                    <div class="logo">
+                        <img src="./assets/images/logo.svg" alt="">
+                    </div>
+                </li>
+              </ul>`;
+              var profilLink = document.getElementById('profil')
+              profilLink.addEventListener('click', () => {
+                var profil = document.getElementById('profil-igraca')
+                profil.style.display = 'block'
+                x[2].addEventListener('click', () => {
+                    profil.style.display = 'none'
+                })
+            })
                 nivo = 1
             if (nivo == 1) {
                 tekstovi = ['Ko rano rani dve srece Gnabri', 'Nikome nije do zore gorela', 'Sto mogu danas to cu sutra vidzet', 'Bez alata nema ni zanata', 'Oko za oko, pasta za zube', 'Bolje biti bogat i zdrav, jer kad si siromasan dzaba ti sto si bolestan', 'Bolje voditi ljubav nego psa']
