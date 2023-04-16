@@ -1,3 +1,5 @@
+
+
 var eren = document.getElementById('1')
 const pravilaIgre = document.getElementById('pravila-igre')
 const pravilaLink = document.getElementById('pravila-link')
@@ -175,23 +177,28 @@ profilClick()
 
 if (ime == '') poljeIme.innerText = 'Eren'
 
-
-if (window.innerWidth < 576) {
-    nivoLink.addEventListener('click', () => {
-        izaberiNivo.style.display = 'block'
-        x[1].addEventListener('click', () => {
-            izaberiNivo.style.display = 'none'
-        })
-        for (let i = 0; i < nivoLista.length; i++) {
-            const element = nivoLista[i];
-            element.addEventListener('click', () => {
+function windowWidth() {
+    if (window.innerWidth < 576) {
+        nivoLink.addEventListener('click', () => {
+            izaberiNivo.style.display = 'block'
+            x[1].addEventListener('click', () => {
                 izaberiNivo.style.display = 'none'
-                nivo = i + 1
-                poljeNivo.innerHTML = `<h4>Nivo: ${nivo}</h4>`
             })
-        }
-    })
+            for (let i = 0; i < nivoLista.length; i++) {
+                const element = nivoLista[i];
+                element.addEventListener('click', () => {
+                    izaberiNivo.style.display = 'none'
+                    nivo = i + 1
+                    poljeNivo.innerHTML = `<h4>Nivo: ${nivo}</h4>`
+                })
+            }
+        })
+    }
 }
+
+windowWidth()
+
+
 
 pravilaLink.addEventListener('click', () => {
     pravilaIgre.style.display = 'block'
@@ -451,7 +458,7 @@ function visiNivo() {
         if (max_niza == pobednici[0]) {
             pobeda.style.display = 'block'
             roar.play()
-            pobeda.addEventListener('click', () =>{
+            pobeda.addEventListener('click', () => {
                 pobeda.style.display = 'none'
             })
             igrac.pobede = igrac.pobede + 1
@@ -537,6 +544,24 @@ function visiNivo() {
                     </div>
                 </li>
               </ul>`;
+    var nivoLink = document.getElementById('nivo-link')
+    if (window.innerWidth < 576) {
+        nivoLink.innerText = 'Odaberi nivo';
+        nivoLink.addEventListener('click', () => {
+            izaberiNivo.style.display = 'block'
+            x[1].addEventListener('click', () => {
+                izaberiNivo.style.display = 'none'
+            })
+            for (let i = 0; i < nivoLista.length; i++) {
+                const element = nivoLista[i];
+                element.addEventListener('click', () => {
+                    izaberiNivo.style.display = 'none'
+                    nivo = i + 1
+                    poljeNivo.innerHTML = `<h4>Nivo: ${nivo}</h4>`
+                })
+            }
+        })
+    }
     var profilLink = document.getElementById('profil')
     profilLink.addEventListener('click', () => {
         var profil = document.getElementById('profil-igraca')
