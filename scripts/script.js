@@ -32,6 +32,9 @@ var itekstovi = document.getElementById('itekstovi')
 var omecevi = document.getElementById('omecevi')
 var pob = document.getElementById('pob')
 
+var pobeda = document.getElementById('pobeda')
+var roar = new Audio('../assets/sounds/roar.mp3')
+
 // console.log(itekstovi, omecevi, pob)
 
 var score = 0
@@ -41,7 +44,7 @@ var otkucaniTekstovi = 0
 var odigraniMecevi = 0
 var pobede = 0
 
-// localStorage.clear()
+// localStorage.removeItem('igraci')
 
 class Igraci {
     imena = []
@@ -59,92 +62,103 @@ class Igrac {
 }
 
 igraci = JSON.parse(localStorage.getItem('igraci'))
+
 var igrac;
-// console.log(igraci)
+console.log(igraci)
 var ime = prompt('Unesite ime igrača')
 
-if (igraci) {
-    if (igraci.imena.length > 0) {
-        for (let i = 0; i < igraci.imena.length; i++) {
-            igrac = igraci.imena[i];
-            var ime1 = igrac.ime
-            console.log(ime)
-            if (ime1.toLowerCase().includes(ime.toLowerCase())) {
-                igrac = igraci.imena[i];
-                // console.log(statIme, itekstovi, omecevi, pob)
-                // console.log(igrac)
+var igraciLength = 0
 
-                // statistika.innerHTML = `<span class="x">X</span>  
-                //                         <h3 class="text-center mb-2"><strong>${igrac.ime}</strong></h3>         
-                //                         <h4>Statistika:</h4>
-                //                         <h5 id="itekstovi" class="text-center mt-3">Iskucani tekstovi: ${igrac.otkucaniTekstovi}</h5>
-                //                         <h5 id="omecevi" class="text-center">Odigrani mečevi: ${igrac.odigraniMecevi}</h5>
-                //                         <h5 id="pob" class="text-center">Pobede: ${igrac.pobede}</h5>
-                //                         <img src="./assets/images/logo.svg" alt="">`
-                function profStat() {
+if (ime) {
+    if (igraci !== null) {
+
+        if (igraci.imena.length > 0) {
+            for (let igrac1 of igraci.imena) {
+                // console.log(igraciLength)
+                var ime1 = igrac1.ime
+                if (ime1.toLowerCase().includes(ime.toLowerCase())) {
+
+                    igraciLength = 1
+                    igrac = igrac1
+                    function profStat() {
+                        profilLink.innerText = igrac.ime
+                        profSlika.setAttribute('src', igrac.slika)
+                        statIme.innerHTML = `<strong>${igrac.ime}</strong>`
+                        itekstovi.innerText = `Iskucani tekstovi: ${igrac.otkucaniTekstovi}`
+                        omecevi.innerText = `Odigrani mečevi: ${igrac.odigraniMecevi}`
+                        pob.innerText = `Pobede: ${igrac.pobede}`
+                    }
+
+                    console.log(statIme, itekstovi, omecevi, pob)
+                    dane = prompt(`${ime1}, da li želiš da promeniš ime?(U polje ukucaj 'Da' ili 'Ne')`)
+                    asliku = prompt('A sliku?(U polje ukucaj "Da" ili "Ne")')
+
+                    if (asliku) {
+                        if (dane.toLowerCase() == 'da' && asliku.toLowerCase() == 'da') {
+                            profStat()
+                            statIme.innerHTML = `<strong>${ime}</strong>`
+                            profilLink.innerText = ime
+                            poljeIme.innerText = ime
+                        } else if (dane.toLowerCase() == 'da' && asliku.toLowerCase() == 'ne') {
+                            profStat()
+                            statIme.innerHTML = `<strong>${ime}</strong>`
+                            profilLink.innerText = ime
+                            poljeIme.innerText = ime
+                            var poljeSlika = document.getElementById('slikaIgrac')
+                            poljeSlika.setAttribute('src', igrac.slika)
+                        } else if (dane.toLowerCase() == 'ne' && asliku.toLowerCase() == 'ne') {
+                            profStat()
+                            var poljeSlika = document.getElementById('slikaIgrac')
+                            poljeSlika.setAttribute('src', igrac.slika)
+                            poljeIme.innerText = igrac.ime
+                            var label = document.getElementById('label')
+                            label.style.display = 'none'
+                        } else if (dane.toLowerCase() == 'ne' && asliku.toLowerCase() == 'da') {
+                            profStat()
+                            poljeIme.innerText = igrac.ime
+                        }
+                    }
+                    break;
+                } else {
+                    igraciLength = 0
+                    igrac = new Igrac(ime)
+                    // igraci.imena.push(igrac)
+                    // localStorage.setItem('igraci', JSON.stringify(igraci))
+                    poljeIme.innerText = igrac.ime
                     profilLink.innerText = igrac.ime
-                    profSlika.setAttribute('src', igrac.slika)
                     statIme.innerHTML = `<strong>${igrac.ime}</strong>`
                     itekstovi.innerText = `Iskucani tekstovi: ${igrac.otkucaniTekstovi}`
                     omecevi.innerText = `Odigrani mečevi: ${igrac.odigraniMecevi}`
                     pob.innerText = `Pobede: ${igrac.pobede}`
                 }
 
-                console.log(statIme, itekstovi, omecevi, pob)
-                dane = prompt(`${ime1}, da li želiš da promeniš ime?(U polje ukucaj 'Da' ili 'Ne')`)
-                asliku = prompt('A sliku?(U polje ukucaj "Da" ili "Ne")')
-                // console.log(dane)
-                // console.log(asliku)
-                if (asliku) {
-                    if (dane.toLowerCase() == 'da' && asliku.toLowerCase() == 'da') {
-                        profStat()
-                        statIme.innerHTML = `<strong>${ime}</strong>`
-                        profilLink.innerText = ime
-                        // console.log(ime)
-                        poljeIme.innerText = ime
-                    } else if (dane.toLowerCase() == 'da' && asliku.toLowerCase() == 'ne') {
-                        profStat()
-                        statIme.innerHTML = `<strong>${ime}</strong>`
-                        profilLink.innerText = ime
-                        poljeIme.innerText = ime
-                        var poljeSlika = document.getElementById('slikaIgrac')
-                        poljeSlika.setAttribute('src', igrac.slika)
-                    } else if (dane.toLowerCase() == 'ne' && asliku.toLowerCase() == 'ne') {
-                        profStat()
-                        var poljeSlika = document.getElementById('slikaIgrac')
-                        poljeSlika.setAttribute('src', igrac.slika)
-                        poljeIme.innerText = igrac.ime
-                        var label = document.getElementById('label')
-                        label.style.display = 'none'
-                    } else if (dane.toLowerCase() == 'ne' && asliku.toLowerCase() == 'da') {
-                        profStat()
-                        poljeIme.innerText = igrac.ime
-                    }
-                }
-
-            } else {
-                igrac = new Igrac(ime)
-                poljeIme.innerText = igrac.ime
-                profilLink.innerText = igrac.ime
-                statIme.innerHTML = `<strong>${igrac.ime}</strong>`
-                itekstovi.innerText = `Iskucani tekstovi: ${igrac.otkucaniTekstovi}`
-                omecevi.innerText = `Odigrani mečevi: ${igrac.odigraniMecevi}`
-                pob.innerText = `Pobede: ${igrac.pobede}`
+            } if (igraciLength == 0) {
+                console.log(igrac)
+                igraci.imena.push(igrac)
+                localStorage.setItem('igraci', JSON.stringify(igraci))
             }
         }
-
+    } else {
+        igrac = new Igrac(ime)
+        // console.log(igrac)
+        igraci = new Igraci()
+        igraci.imena.push(igrac)
+        localStorage.setItem('igraci', JSON.stringify(igraci))
+        poljeIme.innerText = igrac.ime
+        profilLink.innerText = igrac.ime
+        statIme.innerHTML = `<strong>${igrac.ime}</strong>`
+        itekstovi.innerText = `Iskucani tekstovi: ${igrac.otkucaniTekstovi}`
+        omecevi.innerText = `Odigrani mečevi: ${igrac.odigraniMecevi}`
+        pob.innerText = `Pobede: ${igrac.pobede}`
     }
 }
-else {
-    igrac = new Igrac(ime)
-    poljeIme.innerText = igrac.ime
-    profilLink.innerText = igrac.ime
-    statIme.innerHTML = `<strong>${igrac.ime}</strong>`
-    itekstovi.innerText = `Iskucani tekstovi: ${igrac.otkucaniTekstovi}`
-    omecevi.innerText = `Odigrani mečevi: ${igrac.odigraniMecevi}`
-    pob.innerText = `Pobede: ${igrac.pobede}`
-    igraci = new Igraci()
-}
+
+// console.log(igraciLength)
+
+
+
+
+
 
 function profilClick() {
     profilLink.addEventListener('click', () => {
@@ -204,8 +218,14 @@ function dodajSliku() {
             poljeSlika.setAttribute('src', e.target.result)
             profSlika.setAttribute('src', e.target.result)
             igrac.slika = e.target.result
-            igraci.imena.push(igrac)
-            localStorage.setItem('igraci', JSON.stringify(igraci))
+            for (let i = 0; i < igraci.imena.length; i++) {
+                let element = igraci.imena[i];
+                if (element.ime == igrac.ime) {
+                    element = igrac
+                    console.log(element)
+                    localStorage.setItem('igraci', JSON.stringify(igraci))
+                }
+            }
             // console.log(slikaIgrac)
         }
         fileReader.readAsDataURL(slika.files[0])
@@ -323,7 +343,7 @@ if (dugme.innerHTML === 'Start') {
                 if (window.innerWidth < 576) {
                     interval = 650
                 } else {
-                    interval = 500
+                    interval = 550
                 }
                 // console.log(interval)
                 switch (nivo) {
@@ -340,11 +360,11 @@ if (dugme.innerHTML === 'Start') {
                         break;
 
                     case 4:
-                        pozoviPisanje(mikasa, levi, armin, interval, 200, 450, random, 1, 2, 3)
+                        pozoviPisanje(mikasa, levi, armin, interval, 190, 420, random, 1, 2, 3)
                         break;
 
                     case 5:
-                        pozoviPisanje(mikasa, levi, armin, interval, 250, 480, random, 1, 2, 3)
+                        pozoviPisanje(mikasa, levi, armin, interval, 220, 440, random, 1, 2, 3)
                         break;
 
                     default:
@@ -429,6 +449,11 @@ function visiNivo() {
 
         }
         if (max_niza == pobednici[0]) {
+            pobeda.style.display = 'block'
+            roar.play()
+            pobeda.addEventListener('click', () =>{
+                pobeda.style.display = 'none'
+            })
             igrac.pobede = igrac.pobede + 1
             pob.innerText = `Pobede: ${igrac.pobede}`
             for (let i = 0; i < igraci.imena.length; i++) {
@@ -584,77 +609,6 @@ function generateRandom(min, max) {
     rand = Math.floor(rand * difference);
     rand = rand + min;
     return rand;
-}
-
-function dugmeNivoPet() {
-    dugme.innerHTML = 'Nova igra'
-    dugme.style.display = 'block'
-    text.innerHTML = ` <ul class="nav nav-tabs">
-            
-                <li class="nav-item dropdown col-2 col-sm-1">
-                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"  href="#" role="button" aria-expanded="false">
-                    <div class="burger"></div>
-                    <div class="burger"></div>
-                    <div class="burger"></div>
-                  </a>
-                  <ul class="dropdown-menu" id="padajuci">
-                    <li><a id="pravila-link" class="dropdown-item" href="#">Pravila igre</a></li>
-                    
-                    <li>
-                        <a class="dropdown-item" id="nivo-link" href="#">
-                          Odaberi nivo &raquo;
-                        </a>
-                        <ul class="dropdown-menu dropdown-submenu">
-                          <li>
-                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 1</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 2</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 3</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 4</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item odaberi-nivo" href="#">Nivo 5</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a id="profil" class="dropdown-item" href="#">${igrac.ime}</a></li>
-                    
-                  </ul>
-                </li>
-                <li class="align-self-center col-8 col-sm-10" id="title">
-                    <h4>Attack on Keyboard</h4>
-                </li>
-                <li>
-                    <div class="logo">
-                        <img src="./assets/images/logo.svg" alt="">
-                    </div>
-                </li>
-              </ul>`;
-    profilClick()
-
-
-    dugme.addEventListener('click', () => {
-
-        //     score = 0
-        //     eren.value = ''
-        //     mikasa.innerHTML = ''
-        //     armin.innerHTML = ''
-        //     levi.innerHTML = ''
-        //     nivo = 1
-        // if (nivo == 1) {
-        //     tekstovi = ['Ko rano rani dve srece Gnabri', 'Nikome nije do zore gorela', 'Sto mogu danas to cu sutra vidzet', 'Bez alata nema ni zanata', 'Oko za oko, pasta za zube', 'Bolje biti bogat i zdrav, jer kad si siromasan dzaba ti sto si bolestan', 'Bolje voditi ljubav nego psa']
-        //     poljeNivo.innerHTML = nivo < 6 ? `<h4>Nivo: ${nivo}</h4>` : ``
-
-        //     pobednici = [[], [], [], []]
-        // }
-    })
-
 }
 
 
